@@ -28,6 +28,7 @@ export default async function LandingPage({ user, projects }) {
                 }}
               >
                 <p style={{ color: 'black' }}>{project.name}</p>
+                <p style={{ color: 'black' }}>{project.description}</p>
               </div>
             );
           })}
