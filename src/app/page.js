@@ -10,9 +10,10 @@ export default async function HandlingPage() {
   if (error || !data?.user) {
     redirect('/login');
   }
+
   return (
     <div className={styles.main}>
-      <LandingPage />
+      <LandingPage user={data} />
     </div>
   );
 }

@@ -1,33 +1,37 @@
-'use client';
 import styles from '../page.module.css';
-import { getProjects } from './actions';
+import { createClient } from '../../../utils/supabase/server';
 
-export default function LandingPage() {
+export default async function LandingPage({ user, projects }) {
+  const supabase = createClient();
+  const { data, error } = await supabase
+    .from('Projects')
+    .select('*')
+    .eq('owner', user.user.id);
   return (
-    <div className={styles.center}>
-      <div
-        style={{
-          borderWidth: '1px',
-          borderRadius: '4px',
-          borderColor: 'white',
-          height: '200px',
-          width: '200px',
-          backgroundColor: 'white',
-        }}
-      >
-        <button
-          style={{
-            height: '25px',
-            width: '40px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-          onClick={getProjects()}
+    <div>
+      <button>Add</button>
+
+      <div className={styles.center}>
+        <div
+          style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}
         >
-          <p>+</p>
-        </button>
-        <p>Signed In</p>
+          {data.map((project) => {
+            return (
+              <div
+                style={{
+                  borderRadius: '4px',
+                  height: '200px',
+                  width: '200px',
+                  backgroundColor: 'white',
+                  margin: '10px',
+                  padding: '10px',
+                }}
+              >
+                <p style={{ color: 'black' }}>{project.name}</p>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
