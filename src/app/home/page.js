@@ -2,6 +2,7 @@ import styles from '../page.module.css';
 import { createClient } from '../../../utils/supabase/server';
 import Modal from '../newProjectModal/modal';
 import AddButton from './addProjectButton';
+import SmallProject from './smallProject';
 
 export default async function LandingPage({ user, searchParams }) {
   const { show } = searchParams;
@@ -19,25 +20,7 @@ export default async function LandingPage({ user, searchParams }) {
           style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}
         >
           {data.map((project) => {
-            return (
-              <div
-                key={project.id}
-                style={{
-                  borderRadius: '4px',
-                  height: '200px',
-                  width: '200px',
-                  backgroundColor: 'white',
-                  margin: '10px',
-                  padding: '10px',
-                }}
-              >
-                <p style={{ color: 'black' }}>{project.name}</p>
-                <p style={{ color: 'black' }}>{project.description}</p>
-                <p style={{ color: 'black' }}>
-                  Completed Rows: {project.completedRows}
-                </p>
-              </div>
-            );
+            return <SmallProject project={project} />;
           })}
         </div>
       </div>

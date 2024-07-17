@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { addProject } from './actions';
 
 export default function Modal() {
   return (
@@ -77,6 +78,33 @@ export default function Modal() {
               id='description'
               name='description'
               type='text'
+              style={{
+                borderWidth: '0px',
+                backgroundColor: 'whitesmoke',
+                borderRadius: '4px',
+                height: '30px',
+                width: '200px',
+                color: 'black',
+                padding: '5px',
+              }}
+            />
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: '10px',
+              width: '300px',
+            }}
+          >
+            <label htmlFor='description'>Rows Completed:</label>
+            <input
+              aria-multiline
+              id='rowsCompleted'
+              name='rowsCompleted'
+              type='number'
               required
               style={{
                 borderWidth: '0px',
@@ -96,6 +124,35 @@ export default function Modal() {
               justifyContent: 'space-between',
               alignItems: 'center',
               padding: '10px',
+              width: '300px',
+            }}
+          >
+            <label htmlFor='description'>Total Rows:</label>
+            <input
+              aria-multiline
+              id='totalRows'
+              name='totalRows'
+              type='number'
+              required
+              style={{
+                borderWidth: '0px',
+                backgroundColor: 'whitesmoke',
+                borderRadius: '4px',
+                height: '30px',
+                width: '200px',
+                color: 'black',
+                padding: '5px',
+              }}
+            />
+          </div>
+
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: '10px',
             }}
           >
             <button
@@ -107,7 +164,7 @@ export default function Modal() {
                 color: 'black',
                 height: '30px',
               }}
-              // formAction={login}
+              formAction={addProject}
             >
               Submit
             </button>
