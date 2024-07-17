@@ -12,7 +12,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <h1 style={{ padding: '10px' }}>Knitting Row Counter</h1>
+        <h1 style={{ padding: '10px', position: 'absolute' }}>
+          Knitting Row Counter
+        </h1>
         {children}
       </body>
     </html>
