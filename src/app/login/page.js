@@ -7,9 +7,9 @@ export default async function LoginPage() {
   const supabase = createClient();
 
   const { data, error } = await supabase.auth.getUser();
-  if (error || data?.user) {
-    redirect('/');
-  }
+  // if (error || data?.user) {
+  //   redirect('/');
+  // }
   return (
     <div className={styles.loginFormWrapper}>
       <h2>Login/Sign Up</h2>
