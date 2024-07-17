@@ -1,7 +1,11 @@
 import styles from '../page.module.css';
 import { createClient } from '../../../utils/supabase/server';
+import Modal from '../newProjectModal/modal';
+import AddButton from './addProjectButton';
 
-export default async function LandingPage({ user, projects }) {
+export default async function LandingPage({ user, searchParams }) {
+  const { show } = searchParams;
+  console.log(show);
   const supabase = createClient();
   const { data, error } = await supabase
     .from('Projects')
@@ -9,8 +13,7 @@ export default async function LandingPage({ user, projects }) {
     .eq('owner', user.user.id);
   return (
     <div>
-      <button>Add</button>
-
+      <AddButton />
       <div className={styles.center}>
         <div
           style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}
@@ -18,6 +21,7 @@ export default async function LandingPage({ user, projects }) {
           {data.map((project) => {
             return (
               <div
+                key={project.id}
                 style={{
                   borderRadius: '4px',
                   height: '200px',
@@ -29,11 +33,15 @@ export default async function LandingPage({ user, projects }) {
               >
                 <p style={{ color: 'black' }}>{project.name}</p>
                 <p style={{ color: 'black' }}>{project.description}</p>
+                <p style={{ color: 'black' }}>
+                  Completed Rows: {project.completedRows}
+                </p>
               </div>
             );
           })}
         </div>
       </div>
+      {show && <Modal />}
     </div>
   );
 }
