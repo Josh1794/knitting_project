@@ -6,7 +6,7 @@ export default function SmallProject({ project }) {
   console.log(project);
   return (
     <div>
-      <Link href={`/?project=${project.id}`}>
+      <Link href={`/?projectPage=${project.id}`}>
         <div key={project.id} className={styles.smallProjectCard}>
           <p>{project.name}</p>
           <p>{project.description}</p>

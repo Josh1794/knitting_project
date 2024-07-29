@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import styles from './page.module.css';
 import { logout } from './actions';
+import Image from 'next/image';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -24,7 +25,18 @@ export default async function RootLayout({ children }) {
             justifyContent: 'space-between',
           }}
         >
-          <h1 style={{ padding: '10px' }}>Knitting Row Counter</h1>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '50px',
+            }}
+          >
+            <h1 style={{ padding: '10px' }}>Knitting Row Counter</h1>
+            <Image src='/apple-touch-icon.png' width={40} height={40} />
+          </div>
           <form>
             <button className={styles.logoutButton} formAction={logout}>
               Logout

@@ -13,8 +13,8 @@ export default async function LandingPage({ user, searchParams }) {
     .select('*')
     .eq('owner', user.user.id);
 
-  if (searchParams.project) {
-    redirect(`/project/?id=${searchParams.project}`);
+  if (searchParams.projectPage) {
+    redirect(`/projectPage/?id=${searchParams.projectPage}`);
   }
   return (
     <div>
