@@ -11,7 +11,7 @@ export default async function HandlingPage({ params, searchParams }) {
   }
 
   return (
-    <div className={styles.main}>
+    <div>
       <LandingPage user={data} searchParams={searchParams} />
     </div>
   );

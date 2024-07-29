@@ -1,7 +1,7 @@
 import { login, signup } from './actions';
 import { createClient } from '../../../utils/supabase/server';
 import { redirect } from 'next/navigation';
-import styles from '../page.module.css';
+import styles from './login.module.css';
 
 export default async function LoginPage() {
   const supabase = createClient();
@@ -36,6 +36,8 @@ export default async function LoginPage() {
               borderRadius: '4px',
               height: '30px',
               width: '200px',
+              color: 'black',
+              padding: '5px',
             }}
           />
         </div>
@@ -61,6 +63,8 @@ export default async function LoginPage() {
               borderRadius: '4px',
               height: '30px',
               width: '200px',
+              color: 'black',
+              padding: '5px',
             }}
           />
         </div>
@@ -73,30 +77,10 @@ export default async function LoginPage() {
             padding: '10px',
           }}
         >
-          <button
-            style={{
-              width: '49%',
-              borderWidth: '0px',
-              backgroundColor: 'whitesmoke',
-              borderRadius: '4px',
-              color: 'black',
-              height: '30px',
-            }}
-            formAction={login}
-          >
+          <button className={styles.loginButtons} formAction={login}>
             Log in
           </button>
-          <button
-            style={{
-              width: '49%',
-              borderWidth: '0px',
-              backgroundColor: 'whitesmoke',
-              borderRadius: '4px',
-              color: 'black',
-              height: '30px',
-            }}
-            formAction={signup}
-          >
+          <button className={styles.loginButtons} formAction={signup}>
             Sign up
           </button>
         </div>

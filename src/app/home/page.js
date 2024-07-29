@@ -1,21 +1,36 @@
-import styles from '../page.module.css';
 import { createClient } from '../../../utils/supabase/server';
 import Modal from '../newProjectModal/modal';
 import AddButton from './addProjectButton';
 import SmallProject from './smallProject';
+import { redirect } from 'next/navigation';
 
 export default async function LandingPage({ user, searchParams }) {
   const { show } = searchParams;
-  console.log(show);
+  console.log(searchParams);
   const supabase = createClient();
   const { data, error } = await supabase
     .from('Projects')
     .select('*')
     .eq('owner', user.user.id);
+
+  if (searchParams.project) {
+    redirect(`/project/?id=${searchParams.project}`);
+  }
   return (
     <div>
-      <AddButton />
-      <div className={styles.center}>
+      {show && <Modal />}
+      <div
+        style={{
+          marginTop: '100px',
+          height: '90vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column',
+        }}
+      >
+        <AddButton />
+
         <div
           style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}
         >
@@ -24,7 +39,6 @@ export default async function LandingPage({ user, searchParams }) {
           })}
         </div>
       </div>
-      {show && <Modal />}
     </div>
   );
 }

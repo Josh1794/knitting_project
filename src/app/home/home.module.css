@@ -1,0 +1,31 @@
+.addButton {
+  height: 30px;
+  width: 70px;
+  color: black;
+  background-color: whitesmoke;
+  border-radius: 4px;
+  border-width: 0px;
+}
+.addButton:hover {
+  background-color: orange;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s; /* For Safari 3.0 to 6.0 */
+  transition: background-color 0.3s; /* For modern browsers */
+}
+
+.smallProjectCard {
+  border-radius: 4px;
+  height: 200px;
+  width: 200px;
+  background-color: whitesmoke;
+  margin: 10px;
+  padding: 10px;
+  color: black;
+}
+
+.smallProjectCard:hover {
+  background-color: orange;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s; /* For Safari 3.0 to 6.0 */
+  transition: background-color 0.3s; /* For modern browsers */
+}
